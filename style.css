@@ -2,9 +2,9 @@
 :root {
     --taskCol: #404040;    /* task boxes */
     --solCol: #808080;   /* solution boxes */
-    --solColh: #666666;   /* solution boxes hover */
+    --solColh: #808080cc;   /* solution boxes hover */
     --infoCol: #1C668F;    /* info boxes */
-    --infoColh: #175475;    /* info boxes hover */
+    --infoColh: #1C668Fcc;    /* info boxes hover */
     --fsize: medium;
 }
 
