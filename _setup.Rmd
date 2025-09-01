@@ -34,7 +34,7 @@ knit_engines$set(task = function(options) {
         headerName <- ifelse(length(options$title) > 0, options$title, "Task")
         ## set up output
         if(opts_knit$get("rmarkdown.pandoc.to") != "latex") {
-            out <- paste0("<div class=\"panel panel-default\"><div class=\"panel-heading\">", headerName, "</div>\n<div class=\"panel-body\">", out, "</div>\n</div>")
+            out <- paste0("<div class=\"panel panel-default\">\n<div class=\"panel-heading\">", headerName, "</div>\n<div class=\"panel-body\">", out, "</div>\n</div>")
         } else {
             out <- paste0("\\hypertarget{tsk", taskCtr, "}{}\\bblockT[", headerName, "]{\\phantomsection\\label{sol", taskCtr, "}", taskCtr, "}\n", out, "\n\\eblockT\n")
         }
@@ -53,7 +53,7 @@ knit_engines$set(solution = function(options) {
             ## extract header if provided
             headerName <- ifelse(length(options$title) > 0, options$title, "Solution")
             if(opts_knit$get("rmarkdown.pandoc.to") != "latex") {
-                out <- paste0("<button id=\"displayText", options$label, "\" onclick=\"javascript:toggle('", options$label, "');\">Show: ", headerName, "</button>\n\n<div id=\"toggleText", options$label, "\" style=\"display: none\"><div class=\"panel panel-default\"><div class=\"panel-heading panel-heading1\"> ", headerName, " </div><div class=\"panel-body\">", out, "</div></div></div>\n")
+                out <- paste0("<button id=\"displayText", options$label, "\" onclick=\"javascript:toggle('", options$label, "');\">Show: ", headerName, "</button>\n\n<div id=\"toggleText", options$label, "\" style=\"display: none\">\n<div class=\"panel panel-default\">\n<div class=\"panel-heading panel-heading1\"> ", headerName, " </div>\n<div class=\"panel-body\">", out, "</div>\n</div>\n</div>\n")
             } else {
                 solLabels[[taskCtr]][2] <- out
                 solLabels[[taskCtr]][3] <- headerName
@@ -92,8 +92,8 @@ knit_engines$set(solution = function(options) {
             }
             # opts_chunk$set(tidy = tempTidy, tidy.opts = tempTidyOpts)
             if(opts_knit$get("rmarkdown.pandoc.to") != "latex") {
-                out <- paste0("<div class=\"tab\"><button class=\"tablinks", options$label, " active\" onclick=\"javascript:openCode(event, 'option1", options$label, "', '", options$label, "');\">", headerNames[1], "</button><button class=\"tablinks", options$label, "\" onclick=\"javascript:openCode(event, 'option2", options$label, "', '", options$label, "');\">", headerNames[2], "</button></div><div id=\"option1", options$label, "\" class=\"tabcontent", options$label, "\">", out[[1]], "</div><div id=\"option2", options$label, "\" class=\"tabcontent", options$label, "\">", out[[2]], "\n</div><script> javascript:hide('option2", options$label, "') </script>")
-                out <- paste0("<button id=\"displayText", options$label, "\" onclick=\"javascript:toggle('", options$label, "');\">Show: ", headerName, "</button>\n\n<div id=\"toggleText", options$label, "\" style=\"display: none\"><div class=\"panel panel-default\"><div class=\"panel-heading panel-heading1\"> ", headerName, " </div><div class=\"panel-body\">", out, "</div></div></div>\n")
+                out <- paste0("<div class=\"tab\">\n<button class=\"tablinks", options$label, " active\" onclick=\"javascript:openCode(event, 'option1", options$label, "', '", options$label, "');\">", headerNames[1], "</button><button class=\"tablinks", options$label, "\" onclick=\"javascript:openCode(event, 'option2", options$label, "', '", options$label, "');\">", headerNames[2], "\n</button>\n</div>\n<div id=\"option1", options$label, "\" class=\"tabcontent", options$label, "\">", out[[1]], "\n</div>\n<div id=\"option2", options$label, "\" class=\"tabcontent", options$label, "\">", out[[2]], "\n</div><script> javascript:hide('option2", options$label, "') </script>")
+                out <- paste0("<button id=\"displayText", options$label, "\" onclick=\"javascript:toggle('", options$label, "');\">Show: ", headerName, "</button>\n\n<div id=\"toggleText", options$label, "\" style=\"display: none\">\n<div class=\"panel panel-default\">\n<div class=\"panel-heading panel-heading1\"> ", headerName, "\n</div>\n<div class=\"panel-body\">", out, "\n</div>\n</div>\n</div>\n")
                 return(out)
             } else {
                 out <- paste0("\\bmp\n\\bblockST{", headerNames[1], "}\n", out[[1]], "\n\\eblockST\n\\bblockST{", headerNames[2], "}\n", out[[2]], "\n\\eblockST\n\\emp\n")
@@ -124,14 +124,14 @@ knit_engines$set(info = function(options) {
         if(opts_knit$get("rmarkdown.pandoc.to") != "latex") {
             if(options$collapsible) {
                 ## set up environment with collapsible button
-                out <- paste0("<infobutton id=\"displayText", options$label, "\" onclick=\"javascript:toggle('", options$label, "');\">Show: ", headerName, "</infobutton>\n\n<div id=\"toggleText", options$label, "\" style=\"display: none\"><div class=\"panel panel-default\"><div class=\"panel-body\">", out, "</div></div></div>\n")
+                out <- paste0("<infobutton id=\"displayText", options$label, "\" onclick=\"javascript:toggle('", options$label, "');\">Show: ", headerName, "</infobutton>\n\n<div id=\"toggleText", options$label, "\" style=\"display: none\">\n<div class=\"panel panel-default\">\n<div class=\"panel-body\">", out, "\n</div>\n</div>\n</div>\n")
             } else {
                 if(!is.na(headerName)) {
                     ## set up standard boxed environment
-                    out <- paste("<div class=\"panel panel-default\"><div class=\"panel-heading panel-heading2\">", headerName, "</div><div class=\"panel-body\">", out, "</div></div>")
+                    out <- paste("<div class=\"panel panel-default\">\n<div class=\"panel-heading panel-heading2\">", headerName, "</div>\n<div class=\"panel-body\">", out, "\n</div>\n</div>")
                 } else {
                     ## set up standard boxed environment
-                    out <- paste("<div class=\"panel panel-default\"><div class=\"panel-body\">", out, "</div></div>")
+                    out <- paste("<div class=\"panel panel-default\">\n<div class=\"panel-body\">", out, "\n</div>\n</div>\n")
                 }
             }
         } else {
