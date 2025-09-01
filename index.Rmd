@@ -3,18 +3,20 @@ title: "Skeleton Tutorial Template"
 author: "TJ McKinley"
 site: bookdown::bookdown_site
 output:
-    bookdown::pdf_book:
-        includes:
-            in_header: header.tex
-    bookdown::gitbook:
-        config:
-            sharing: null
-        css: 'style.css'
-        includes:
-            in_header: _toggle.html
-        keep_md: TRUE
+  bookdown::pdf_book:
+    includes:
+      in_header: header.tex
+    keep_tex: true
+  bookdown::gitbook:
+    config:
+      sharing: null
+    css: 'style.css'
+    includes:
+      in_header: _toggle.html
+    keep_md: TRUE
 linkcolor: blue
 documentclass: book
+bibliography: refs.bib
 link-citations: yes
 description: "Skeleton Tutorial Template"
 ---
@@ -377,6 +379,10 @@ rnorm(10, 0, 1)
 ```
 
 Setting `htmlsize` or `latexsize` overwrites the `size` argument and allows for sizes to be different for HTML or \LaTeX output respectively. This is most useful for `multCode` chunks that might need shrinking in a \LaTeX environment in order to fit nicely on a page side-by-side.
+
+### References
+
+References can be added in the usual way e.g. `@somepaper:2000` using BibTeX files. Typesets as @somepaper:2000. These get added to each chapter
 
 ### Hypertargets
 

@@ -1,4 +1,17 @@
 rmd_files:
-    html: ['index.Rmd']
-    latex: ['index.Rmd', 'ch_appendix.Rmd']
+  html: [
+    ## index.Rmd must be included
+    'index.Rmd', 
+    ## references.Rmd file must be at end if references used, else comment out
+    'references.Rmd' 
+  ]
+  latex: [
+    ## index.Rmd must be included
+    'index.Rmd',
+     ## ch_appendix.Rmd must be included in LaTeX but not included in HTML and
+     ## must come before references
+    'ch_appendix.Rmd',
+    ## references.Rmd file must be at end if references used, else comment out
+    'references.Rmd' 
+  ]
 output_dir: "docs"
