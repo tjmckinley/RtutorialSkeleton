@@ -5,14 +5,14 @@ site: bookdown::bookdown_site
 output:
   bookdown::pdf_book:
     includes:
-      in_header: header.tex
+      in_header: setupFiles/header.tex
     keep_tex: true
   bookdown::gitbook:
     config:
       sharing: null
     css: 'style.css'
     includes:
-      in_header: _toggle.html
+      in_header: setupFiles/_toggle.html
     keep_md: TRUE
 linkcolor: blue
 documentclass: book
@@ -23,7 +23,7 @@ description: "Skeleton Tutorial Template"
 
 # Opening page
 
-```{r, child = "_setup.Rmd", include = FALSE, purl = FALSE, cache = FALSE}
+```{r, child = "setupFiles/_setup.Rmd", include = FALSE, purl = FALSE, cache = FALSE}
 ```
 
 Basically a standard Bookdown template with a few tweaks. New chapters need to be in separate '.Rmd' files, where each file starts with a chapter heading as seen [here](https://bookdown.org/yihui/bookdown/usage.html). In order to use the task and solution blocks in \LaTeX, you must input the order of the files into the `_bookdown.yml` file, and the first file must be called `index.Rmd` e.g.
