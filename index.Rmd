@@ -236,6 +236,9 @@ Yet more valuable information - this time displayed directly!
 
 typesets as:
 
+```{hypertarget, label = "idtag"}
+```
+
 ```{info, title = "Some interesting aside", collapsible = FALSE}
 Yet more valuable information - this time displayed directly!
 ```
@@ -361,7 +364,6 @@ The `titles` option can be set as before.
 Code chunks can be resized using a `size`, `htmlsize` or `latexsize` chunk option. These take either HTML or \LaTeX sizes and convert accordingly. For example,
 
 ````
-
 ```{r, size = "scriptsize"}`r ''`
 rnorm(10, 0, 1)
 ```
@@ -375,3 +377,15 @@ rnorm(10, 0, 1)
 ```
 
 Setting `htmlsize` or `latexsize` overwrites the `size` argument and allows for sizes to be different for HTML or \LaTeX output respectively. This is most useful for `multCode` chunks that might need shrinking in a \LaTeX environment in order to fit nicely on a page side-by-side.
+
+### Hypertargets
+
+You can link to arbitrary parts of the document by adding `hypertarget` blocks at the point in the text where you want the target, making sure to set a `label` argument set to a unique ID tag e.g. I added
+
+````
+```{hypertarget, label = "idtag"}`r ''`
+```
+
+````
+
+just before the interesting aside earlier, and then you can use e.g. `[click to go to target](#idtag)` in the text as follows: [click to go to target](#idtag).
