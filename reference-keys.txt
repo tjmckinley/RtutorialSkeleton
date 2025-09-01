@@ -1,0 +1,9 @@
+opening-page
+additional-extensions
+different-task-and-solution-titles
+turning-tasks-and-solutions-on-and-off
+generic-information-environments
+tabbed-boxed-environments
+resize-code-chunks
+references
+hypertargets

@@ -1,0 +1,724 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+% latex macro to create task boxes
+\usepackage{comment, geometry, listings}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable}
+
+\newgeometry{margin=1in}
+
+\definecolor{taskCol}{HTML}{404040}
+\definecolor{solCol}{HTML}{808080}
+\definecolor{infoCol}{HTML}{1C668F}
+
+\tcbset{colback=white,colframe=taskCol,arc=0mm}
+
+%trick to fool markdown into compiling
+\newcommand{\bblockT}[2][Task]{\begin{tcolorbox}[title = #1 #2, parbox = false]}
+\newcommand{\eblockT}{\end{tcolorbox}}
+\newcommand{\bblockS}[2][Solution]{\begin{tcolorbox}[title = #1 #2, colframe=solCol, breakable, parbox = false]}
+\newcommand{\eblockS}{\end{tcolorbox}}
+\newcommand{\bblockI}[1][Info]{\begin{tcolorbox}[title = #1, colframe=infoCol, parbox = false, breakable]}
+\newcommand{\eblockI}{\end{tcolorbox}}
+\newcommand{\bblockINT}{\begin{tcolorbox}[colframe=infoCol, parbox = false, breakable]}
+\newcommand{\eblockINT}{\end{tcolorbox}}
+
+%add tabbed solutions environment
+\newcommand{\bmp}{\begin{tcbraster}[raster columns = 2, raster valign = top]}
+\newcommand{\emp}{\end{tcbraster}}
+\newcommand{\bblockST}[1]{\begin{tcolorbox}[title = #1, colframe=solCol, breakable, parbox = false]}
+\newcommand{\eblockST}{\end{tcolorbox}}
+
+%set solution button link
+\usepackage{tikz}
+
+\newcommand{\buttonT}[1]{
+    \begin{tikzpicture}
+    \node[
+        inner sep=5pt,
+        draw=taskCol,
+        fill=taskCol,
+        rounded corners=2pt,
+        text=white
+    ] (c1) {#1};
+    \end{tikzpicture}
+}
+
+\newcommand{\buttonS}[1]{
+    \begin{tikzpicture}
+    \node[
+        inner sep=5pt,
+        draw=solCol,
+        fill=solCol,
+        rounded corners=2pt,
+        text=white
+    ] (c1) {#1};
+    \end{tikzpicture}
+}
+
+\newcommand{\buttonI}[1]{
+    \begin{tikzpicture}
+    \node[
+        inner sep=5pt,
+        draw=infoCol,
+        fill=infoCol,
+        rounded corners=2pt,
+        text=white
+    ] (c1) {#1};
+    \end{tikzpicture}
+}
+
+\newcommand{\colpageref}[1]{\hypersetup{linkcolor=white}\pageref{#1}}
+
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true
+}
+
+% colour of code chunks
+\colorlet{shadecolor}{gray!15}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Skeleton Tutorial Template},
+  pdfauthor={TJ McKinley},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Skeleton Tutorial Template}
+\author{TJ McKinley}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\chapter{Opening page}\label{opening-page}
+
+Basically a standard Bookdown template with a few tweaks. New chapters need to be in separate `.Rmd' files, where each file starts with a chapter heading as seen \href{https://bookdown.org/yihui/bookdown/usage.html}{here}. In order to use the task and solution blocks in \LaTeX, you must input the order of the files into the \texttt{\_bookdown.yml} file, and the first file must be called \texttt{index.Rmd} e.g.
+
+\begin{verbatim}
+rmd_files:
+    html: ['index.Rmd', 'ch1.Rmd']
+    latex: ['index.Rmd', 'ch1.Rmd', 'ch_appendix.Rmd']
+output_dir: "docs"
+\end{verbatim}
+
+The \texttt{latex:} path above \textbf{\emph{must}} have \texttt{\textquotesingle{}ch\_appendix.Rmd\textquotesingle{}} as its last entry. This ensures that the appendix is properly formatted for the solutions to the problems.
+
+You must have the following lines at the \textbf{start} of your \texttt{index.Rmd} file (please do not change the chunk options for this chunk, and place it as the \textbf{first} chunk in the document):
+
+\begin{verbatim}
+```{r, child = "_setup.Rmd", include = FALSE, purl = FALSE, cache = FALSE}
+```
+\end{verbatim}
+
+\begin{quote}
+\textbf{Note}: the \texttt{task} / \texttt{solution} and \texttt{info} blocks detailed below cannot be cached. Code chunks within these blocks can be cached as usual. The caching is automatically disabled in order to make sure the PDF outputs are correctly cross-referenced.
+\end{quote}
+
+There are a couple of useful special blocks. A \texttt{task} block, and a \texttt{solution} block. These can be used as e.g.
+
+\begin{verbatim}
+```{task}
+Here is a task written in **markdown**.
+```
+\end{verbatim}
+
+which renders as:
+
+\hypertarget{tsk1}{}\bblockT[Task]{\phantomsection\label{sol1}1}
+
+Here is a task written in \textbf{markdown}.
+\eblockT
+
+You can include chunks within the \texttt{task} chunk, but you need to use double backticks \emph{within} the chunk, and leave carriage returns around the internal chunk e.g.
+
+\begin{verbatim}
+
+```{task}
+
+``{r}
+x <- 2 + 2
+x
+``
+
+```
+\end{verbatim}
+
+which renders as:
+
+\hypertarget{tsk2}{}\bblockT[Task]{\phantomsection\label{sol2}2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{+} \DecValTok{2}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\eblockT
+
+Be careful to have suitable carriage returns around e.g.~\texttt{enumerate} or \texttt{itemize} environments inside the chunk also. For example:
+
+\begin{verbatim}
+
+```{task}
+Here is a list:
+1. item 1
+2. item 2
+```
+\end{verbatim}
+
+will not render nicely. But
+
+\begin{verbatim}
+
+```{task}
+Here is a list:
+
+1. item 1
+2. item 2
+
+```
+\end{verbatim}
+
+will:
+
+\hypertarget{tsk3}{}\bblockT[Task]{\phantomsection\label{sol3}3}
+
+Here is a list:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  item 1
+\item
+  item 2
+\end{enumerate}
+
+\eblockT
+
+The \texttt{solution} chunk works in the same way, and the numbers will follow the previous \texttt{task} chunk (so you can set tasks without solutions) e.g.
+
+\begin{verbatim}
+
+```{task}
+Add 2 and 2 together
+```
+
+```{solution}
+
+``{r}
+2 + 2
+``
+
+```
+\end{verbatim}
+
+gives:
+
+\hypertarget{tsk4}{}\bblockT[Task]{\phantomsection\label{sol4}4}
+
+Add 2 and 2 together
+\eblockT
+
+\hyperlink{sol4}{\buttonS{Show: Solution on P\colpageref{tsk4}}}
+
+\section{Additional extensions}\label{additional-extensions}
+
+\subsection{Different task and solution titles}\label{different-task-and-solution-titles}
+
+Task and solution boxes can also be given different names using the \texttt{title} option e.g.
+
+\begin{verbatim}
+
+```{task, title = "Question"}
+What is the meaning of life, the universe and everything?
+```
+
+```{solution, title = "Answer"}
+Why 42 of course!
+```
+\end{verbatim}
+
+gives:
+
+\hypertarget{tsk5}{}\bblockT[Question]{\phantomsection\label{sol5}5}
+
+What is the meaning of life, the universe and everything?
+\eblockT
+
+\hyperlink{sol5}{\buttonS{Show: Answer on P\colpageref{tsk5}}}
+
+\subsection{Turning tasks and solutions on and off}\label{turning-tasks-and-solutions-on-and-off}
+
+Sometimes you might want to hide task and/or solution boxes. This can be done with the \texttt{renderTask} and \texttt{renderSol} chunk options, which can be set globally or locally. For example:
+
+\begin{verbatim}
+
+```{task, title = "Question"}
+Can I set a task and not show the answer?
+```
+
+```{solution, title = "Answer", renderSol = FALSE}
+Indeed, though you won't see this answer unless `renderSol = TRUE`...
+```
+\end{verbatim}
+
+typesets as:
+
+\hypertarget{tsk6}{}\bblockT[Question]{\phantomsection\label{sol6}6}
+
+Can I set a task and not show the answer?
+\eblockT
+
+\subsection{Generic information environments}\label{generic-information-environments}
+
+You can also set generic boxed environments containing arbitrary information.
+
+\begin{verbatim}
+
+```{info, title = "Some interesting titbit"}
+This box contains invaluable information!
+```
+\end{verbatim}
+
+typesets as:
+
+\hypertarget{infoRet1}{}
+
+\hyperlink{info1}{\buttonI{Show: Some interesting titbit on P\colpageref{info1}}}
+\phantomsection\label{infoRet1}
+
+Note that it is useful to set the \texttt{title} option here, else it defaults to \texttt{info}. You can also use this environment to simply display an alert box with information, by setting the \texttt{collapsible} argument to \texttt{FALSE} in the chunk options e.g.
+
+\begin{verbatim}
+
+```{info, title = "Some interesting aside", collapsible = FALSE}
+Yet more valuable information - this time displayed directly!
+```
+\end{verbatim}
+
+typesets as:
+
+\hypertarget{idtag}{}
+
+\bblockI[Some interesting aside]
+
+Yet more valuable information - this time displayed directly!
+\eblockI
+
+In the PDF output, setting \texttt{collapsible\ =\ TRUE} will place the information boxes in a separate Appendix, with links in the main document. You can again hide the \texttt{info} boxes by setting \texttt{renderInfo\ =\ FALSE} in the chunk options.
+
+You can also put boxes around text without any titles by setting \texttt{title\ =\ NA} and \texttt{collapsible\ =\ FALSE} e.g.
+
+\begin{verbatim}
+
+```{info, title = NA, collapsible = FALSE}
+Just some stuff but no titles!
+```
+\end{verbatim}
+
+\bblockINT
+
+Just some stuff but no titles!
+\eblockINT
+
+\subsection{Tabbed boxed environments}\label{tabbed-boxed-environments}
+
+Originally developed to put base R and \texttt{tidyverse} solutions side-by-side, using a \texttt{multCode\ =\ TRUE} option to the solution box. Here the two tabs are separated by four consecutive hashes: \texttt{\#\#\#\#}, and the \texttt{titles} option gives the tab titles (these can be set globally if preferred) e.g.
+
+\begin{verbatim}
+
+```{task}
+Filter the `iris` data by `Species == "setosa"` and find the mean `Petal.Length`.
+```
+
+```{solution, multCode = TRUE, titles = c("Base R", "tidyverse")}
+
+``{r}
+## base R solution
+mean(iris$Petal.Length[
+    iris$Species == "setosa"])
+``
+
+####
+
+``{r}
+## tidyverse solution
+iris %>% 
+    filter(Species == "setosa") %>%
+    select(Petal.Length) %>%
+    summarise(mean = mean(Petal.Length))
+``
+    
+```
+\end{verbatim}
+
+will typeset to:
+
+\hypertarget{tsk7}{}\bblockT[Task]{\phantomsection\label{sol7}7}
+
+Filter the \texttt{iris} data by \texttt{Species\ ==\ "setosa"} and find the mean \texttt{Petal.Length}.
+\eblockT
+
+\hyperlink{sol7}{\buttonS{Show: Solution on P\colpageref{tsk7}}}
+
+Note that there is also a \texttt{multCode} chunk that does not link to task and solution boxes e.g.
+
+\begin{verbatim}
+
+```{multCode}
+
+Two options: 
+
+* Option 1
+
+####
+
+Two options:
+    
+* Option 2
+
+```
+\end{verbatim}
+
+will typeset to:
+
+\bmp
+\bblockST{Option 1}
+
+Two options:
+
+\begin{itemize}
+\tightlist
+\item
+  Option 1
+\end{itemize}
+
+\eblockST
+\bblockST{Option 2}
+
+Two options:
+
+\begin{itemize}
+\tightlist
+\item
+  Option 2
+\end{itemize}
+
+\eblockST
+\emp
+
+The \texttt{titles} option can be set as before.
+
+\subsection{Resize code chunks}\label{resize-code-chunks}
+
+Code chunks can be resized using a \texttt{size}, \texttt{htmlsize} or \texttt{latexsize} chunk option. These take either HTML or \LaTeX sizes and convert accordingly. For example,
+
+\begin{verbatim}
+```{r, size = "scriptsize"}
+rnorm(10, 0, 1)
+```
+\end{verbatim}
+
+typesets as:
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] -0.11032580 -0.02240588 -1.31424225  3.30336349  0.69458163 -0.64004619
+##  [7]  0.36418021  0.08013076  0.38607532 -0.79358265
+\end{verbatim}
+
+\normalsize
+
+Setting \texttt{htmlsize} or \texttt{latexsize} overwrites the \texttt{size} argument and allows for sizes to be different for HTML or \LaTeX output respectively. This is most useful for \texttt{multCode} chunks that might need shrinking in a \LaTeX environment in order to fit nicely on a page side-by-side.
+
+\subsection{References}\label{references}
+
+References can be added in the usual way e.g.~\texttt{@somepaper:2000} using BibTeX files. Typesets as author (\citeproc{ref-somepaper:2000}{2000}). These get added to each chapter
+
+\subsection{Hypertargets}\label{hypertargets}
+
+You can link to arbitrary parts of the document by adding \texttt{hypertarget} blocks at the point in the text where you want the target, making sure to set a \texttt{label} argument set to a unique ID tag e.g.~I added
+
+\begin{verbatim}
+```{hypertarget, label = "idtag"}
+```
+\end{verbatim}
+
+just before the interesting aside earlier, and then you can use e.g.~\texttt{{[}click\ to\ go\ to\ target{]}(\#idtag)} in the text as follows: \hyperref[idtag]{click to go to target}.
+
+\chapter*{References}\label{references-1}
+\addcontentsline{toc}{chapter}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-somepaper:2000}
+author, Some. 2000. {``Some Title.''} \emph{Some Journal} 1: 1--20.
+
+\end{CSLReferences}
+
+\newgeometry{margin=0.5in}
+
+\appendix
+
+
+\part*{Appendices}\label{part-appendices}
+\addcontentsline{toc}{part}{Appendices}
+
+\chapter*{Answers}\label{answers}
+\addcontentsline{toc}{chapter}{Answers}
+
+\hypertarget{sol4}{}
+\bblockS[Solution]{\phantomsection\label{tsk4}4}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \SpecialCharTok{+} \DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\vspace{\baselineskip}
+
+\hyperlink{tsk4}{\buttonT{Return to task on P\colpageref{sol4}}}
+\eblockS
+\hypertarget{sol5}{}
+\bblockS[Answer]{\phantomsection\label{tsk5}5}
+
+Why 42 of course!
+
+\vspace{\baselineskip}
+
+\hyperlink{tsk5}{\buttonT{Return to task on P\colpageref{sol5}}}
+\eblockS
+\hypertarget{sol7}{}
+\bblockS[Solution]{\phantomsection\label{tsk7}7}
+\bmp
+\bblockST{Base R}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# base R solution}
+\FunctionTok{mean}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Petal.Length[}
+\NormalTok{    iris}\SpecialCharTok{$}\NormalTok{Species }\SpecialCharTok{==} \StringTok{"setosa"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.462
+\end{verbatim}
+
+\eblockST
+\bblockST{tidyverse}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# tidyverse solution}
+\NormalTok{iris }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{filter}\NormalTok{(Species }\SpecialCharTok{==} \StringTok{"setosa"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{select}\NormalTok{(Petal.Length) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(Petal.Length))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    mean
+## 1 1.462
+\end{verbatim}
+
+\eblockST
+\emp
+
+\vspace{\baselineskip}
+
+\hyperlink{tsk7}{\buttonT{Return to task on P\colpageref{sol7}}}
+\eblockS
+
+\chapter*{Additional information}\label{additional-information}
+\addcontentsline{toc}{chapter}{Additional information}
+
+\hypertarget{info1}{}
+\bblockI[Some interesting titbit]{\phantomsection\label{info1}}
+
+This box contains invaluable information!
+
+\vspace{\baselineskip}
+
+\hyperlink{infoRet1}{\buttonI{Return to P\colpageref{infoRet1}}}
+\eblockI
+
+\end{document}
