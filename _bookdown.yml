@@ -8,10 +8,10 @@ rmd_files:
   latex: [
     ## index.Rmd must be included
     'index.Rmd',
-     ## ch_appendix.Rmd must be included in LaTeX but not included in HTML and
-     ## must come before references
-    'ch_appendix.Rmd',
     ## references.Rmd file must be at end if references used, else comment out
-    'references.Rmd' 
+    'references.Rmd',
+     ## ch_appendix.Rmd must be included in LaTeX but not included in HTML and
+     ## must come after references
+    'ch_appendix.Rmd'
   ]
 output_dir: "docs"

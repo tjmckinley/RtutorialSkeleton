@@ -17,7 +17,10 @@ cat(x)
 
 \newgeometry{margin=0.5in}
 
-# (APPENDIX) Appendix {-}
+# (APPENDIX) Appendices {-}
+
+\chapter*{(PART*) Appendices}\label{part-appendices}
+\addcontentsline{toc}{chapter}{(PART*) Appendices}
 
 ```{r, results = "asis", echo = FALSE, cache = FALSE}
 x <- ""
@@ -33,7 +36,7 @@ if(opts_knit$get("rmarkdown.pandoc.to") == "latex"){
 cat(x)
 ```
 
-# Answers
+# Answers {-}
 
 ```{r, echo = FALSE, results = "asis", cache = FALSE}
 if(length(solLabels) > 0) {
@@ -79,7 +82,7 @@ if(opts_knit$get("rmarkdown.pandoc.to") == "latex"){
 cat(x)
 ```
 
-# Additional information
+# Additional information {-}
 
 ```{r, echo = FALSE, results = "asis", cache = FALSE}
 if(length(infoLabels) > 0) {
