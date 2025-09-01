@@ -201,7 +201,7 @@ knit_engines$set(hypertarget = function(options) {
     if(opts_knit$get("rmarkdown.pandoc.to") != "latex") {
         out <- paste0("<a id=\"", options$label, "\"></a>\n")
     } else {
-        out <- paste0("\\hypertarget{", options$label, "}{}\n")
+        out <- paste0("\\phantomsection\\label{", options$label, "}\n")
     }
     return(out)
 })
