@@ -10,7 +10,7 @@ output:
   bookdown::gitbook:
     config:
       sharing: null
-    css: 'style.css'
+    css: setupFiles/style.css
     includes:
       in_header: setupFiles/_toggle.html
     keep_md: TRUE
