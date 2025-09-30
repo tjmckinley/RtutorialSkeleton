@@ -1,3 +1,8 @@
+# (APPENDIX) Appendices {-}
+
+\chapter*{(PART*) Appendices}\label{part-appendices}
+\addcontentsline{toc}{chapter}{(PART*) Appendices}
+
 ```{r, results = "asis", echo = FALSE, cache = FALSE}
 x <- "\\begin{comment}"
 if(opts_knit$get("rmarkdown.pandoc.to") == "latex") {
@@ -16,11 +21,6 @@ cat(x)
 ```
 
 \newgeometry{margin=0.5in}
-
-# (APPENDIX) Appendices {-}
-
-\chapter*{(PART*) Appendices}\label{part-appendices}
-\addcontentsline{toc}{chapter}{(PART*) Appendices}
 
 ```{r, results = "asis", echo = FALSE, cache = FALSE}
 x <- ""

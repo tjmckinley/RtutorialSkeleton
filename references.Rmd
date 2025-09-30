@@ -1,3 +1,6 @@
+\chapter*{(PART*) References}\label{part-references}
+\addcontentsline{toc}{chapter}{(PART*) References}
+
 # References {-}
 
 <div id="refs"></div>

@@ -3,15 +3,25 @@ rmd_files:
     ## index.Rmd must be included
     'index.Rmd', 
     ## references.Rmd file must be at end if references used, else comment out
-    'references.Rmd' 
+    'references.Rmd'  ## must be at end but before appendices
+    ## denotes where appendices start, must add 
+    ## # (APPENDIX) Appendices {-}
+    ## \chapter*{(PART*) Appendices}\label{part-appendices}
+    ## \addcontentsline{toc}{chapter}{(PART*) Appendices}
+    ## to first appendix chapter
   ]
   latex: [
     ## index.Rmd must be included
     'index.Rmd',
     ## references.Rmd file must be at end if references used, else comment out
-    'references.Rmd',
-     ## ch_appendix.Rmd must be included in LaTeX but not included in HTML and
-     ## must come after references
+    'references.Rmd', ## must be at end but before appendices
+    ## denotes where appendices start, must add 
+    ## # (APPENDIX) Appendices {-}
+    ## \chapter*{(PART*) Appendices}\label{part-appendices}
+    ## \addcontentsline{toc}{chapter}{(PART*) Appendices}
+    ## to first appendix chapter
+    ## ch_appendix.Rmd must be included in LaTeX but not included in HTML and
+    ## must come at the end
     'ch_appendix.Rmd'
   ]
 output_dir: "docs"
